@@ -1,9 +1,5 @@
 ﻿using Employee_Manager.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Employee_Manager.Managers
 {
@@ -15,6 +11,24 @@ namespace Employee_Manager.Managers
         public JSON_EmployeeManager(string filePath)
         {
             _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+        }
+
+        public void ReadEmployeesFromFile()
+        {
+            if (File.Exists(_filePath))
+            {
+                var json = File.ReadAllText(_filePath);
+                _employees = JsonConvert.DeserializeObject<List<Employee>>(json) ?? new List<Employee>();
+
+                if (_employees.Count < 1) 
+                {
+                    Console.WriteLine("ERROR: Incorrect data format in the file (see README.md)");    
+                }
+            }
+            else
+            {
+                Console.WriteLine("ERROR: Invalid path or file!");
+            }
         }
     }
 }
