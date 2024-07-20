@@ -21,8 +21,6 @@
         /// <param name="args">аргументы командной строки</param>
         public void Execute(string[] args)
         {
-            args = new string[] { "-add", "FirstName:John LastName:Doe Salary:100.50" };
-
             if (args.Length == 0)
             {
                 Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: No arguments provided.");
