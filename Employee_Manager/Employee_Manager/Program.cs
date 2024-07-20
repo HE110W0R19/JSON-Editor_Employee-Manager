@@ -1,11 +1,16 @@
-﻿public class Program
+﻿using Employee_Manager.Managers.JSON_Manager;
+
+class Program
 {
     public static void Main(string[] args)
     {
-        if (args.Length == 0)
-        {
-            Console.WriteLine("ERROR: No argumenst for manager!");
-            return;
-        }
+        // Определение относительного пути к файлу employees.json в папке Files
+        string relativePath = Path.Combine("Files", "employees.json");
+        // Получение полного пути к файлу
+        string filePath = Path.GetFullPath(relativePath);
+        // Создание экземпляра EmployeeManagerBuilder
+        var builder = new JSON_EmployeeManager_Builder(filePath);
+        // Выполнение команд на основе аргументов
+        builder.Execute(args);
     }
 }
