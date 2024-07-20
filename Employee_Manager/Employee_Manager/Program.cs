@@ -5,7 +5,7 @@ class Program
     public static void Main(string[] args)
     {
         // Определение относительного пути к файлу employees.json в папке Files
-        string relativePath = Path.Combine("Files", "employees.json");
+        string relativePath = Path.Combine("Files", "Employees.json");
         // Получение полного пути к файлу
         string filePath = Path.GetFullPath(relativePath);
         // Создание экземпляра EmployeeManagerBuilder

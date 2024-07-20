@@ -1,11 +1,5 @@
 [
   {
-    "Id": 1,
-    "FirstName": "John",
-    "LastName": "Smith",
-    "SalaryPerHour": 25.00
-  },
-  {
     "Id": 2,
     "FirstName": "Jane",
     "LastName": "Doe",

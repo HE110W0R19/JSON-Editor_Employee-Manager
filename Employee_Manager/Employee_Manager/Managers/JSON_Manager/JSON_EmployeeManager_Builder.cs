@@ -21,9 +21,11 @@
         /// <param name="args">аргументы командной строки</param>
         public void Execute(string[] args)
         {
+            args = new string[] { "-add", "FirstName:John LastName:Doe Salary:100.50" };
+
             if (args.Length == 0)
             {
-                Console.WriteLine("No arguments provided.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: No arguments provided.");
                 return;
             }
 
@@ -50,7 +52,7 @@
                     break;
 
                 default:
-                    Console.WriteLine("Unknown command.");
+                    Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Unknown command.");
                     break;
             }
         }
@@ -61,9 +63,9 @@
         /// <param name="args">аргументы командной строки</param>
         private void AddEmployee(string[] args)
         {
-            var firstName = args.FirstOrDefault(arg => arg.StartsWith("FirstName:"))?.Split(':')[1];
-            var lastName = args.FirstOrDefault(arg => arg.StartsWith("LastName:"))?.Split(':')[1];
-            var salaryStr = args.FirstOrDefault(arg => arg.StartsWith("Salary:"))?.Split(':')[1];
+            var firstName = args[1].Split(' ')[0].Split(':')[1];
+            var lastName = args[1].Split(' ')[1].Split(':')[1];
+            var salaryStr = args[1].Split(' ')[2].Split(':')[1];
 
             if (firstName != null && lastName != null && decimal.TryParse(salaryStr, out var salary))
             {
@@ -71,7 +73,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid arguments for adding an employee.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Invalid arguments for adding an employee.");
             }
         }
 
@@ -97,7 +99,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid arguments for updating an employee.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Invalid arguments for updating an employee.");
             }
         }
 
@@ -113,7 +115,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid arguments for getting an employee.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Invalid arguments for getting an employee.");
             }
         }
 
@@ -129,7 +131,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid arguments for deleting an employee.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Invalid arguments for deleting an employee.");
             }
         }
 

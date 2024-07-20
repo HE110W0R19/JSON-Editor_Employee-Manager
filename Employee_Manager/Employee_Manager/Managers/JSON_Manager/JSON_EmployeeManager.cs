@@ -31,15 +31,15 @@ namespace Employee_Manager.Managers.JSON_Manager
 
                 if (_employees.Count < 1)
                 {
-                    Console.WriteLine("ERROR: Incorrect data format in the file (see README.md)");
+                    Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Incorrect data format in the file (see README.md)");
                 }
             }
             else
             {
-                Console.WriteLine("ERROR: Invalid path or file!");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Invalid path or file!");
             }
 
-            Console.WriteLine($"SUCCESS: Employees was readed from {Path.GetFileName(_filePath)}");
+            Console.WriteLine($"{DateTime.Now.ToLongTimeString()} SUCCESS: Employees was readed from {Path.GetFileName(_filePath)}");
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Employee_Manager.Managers.JSON_Manager
             _employees.Add(newEmployee);
             SaveEmployees();
 
-            Console.WriteLine($"SUCCESS: Employee {firstName} {lastName} was added!");
+            Console.WriteLine($"{DateTime.Now.ToLongTimeString()} SUCCESS: Employee {firstName} {lastName} was added!");
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Employee_Manager.Managers.JSON_Manager
             var employee = _employees.FirstOrDefault(e => e.Id == id);
             if (employee == null)
             {
-                Console.WriteLine($"ERROR: Employee with Id {id} not found.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Employee with Id {id} not found.");
                 return;
             }
 
@@ -120,14 +120,14 @@ namespace Employee_Manager.Managers.JSON_Manager
             var employee = _employees.FirstOrDefault(e => e.Id == id);
             if (employee == null)
             {
-                Console.WriteLine($"ERROR: Employee with Id {id} not found.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Employee with Id {id} not found.");
                 return;
             }
 
             _employees.Remove(employee);
             SaveEmployees();
 
-            Console.WriteLine($"SUCCESS: Employee with Id:{id} was deleted!");
+            Console.WriteLine($"{DateTime.Now.ToLongTimeString()} SUCCESS: Employee with Id:{id} was deleted!");
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Employee_Manager.Managers.JSON_Manager
             var employee = _employees.FirstOrDefault(e => e.Id == id);
             if (employee == null)
             {
-                Console.WriteLine($"ERROR: Employee with Id {id} not found.");
+                Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: Employee with Id {id} not found.");
                 return;
             }
 
@@ -160,7 +160,7 @@ namespace Employee_Manager.Managers.JSON_Manager
 
             SaveEmployees();
 
-            Console.WriteLine($"SUCCESS: Employee exchanged to [{firstName}, {lastName}, {salary}]");
+            Console.WriteLine($"{DateTime.Now.ToLongTimeString()} SUCCESS: Employee exchanged to [{firstName}, {lastName}, {salary}]");
         }
 
         /// <summary>
