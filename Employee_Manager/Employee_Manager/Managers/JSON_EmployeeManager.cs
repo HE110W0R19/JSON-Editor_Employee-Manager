@@ -1,9 +1,10 @@
-﻿using Employee_Manager.Models;
+﻿using Employee_Manager.Abstracts;
+using Employee_Manager.Models;
 using Newtonsoft.Json;
 
 namespace Employee_Manager.Managers
 {
-    public class JSON_EmployeeManager
+    public class JSON_EmployeeManager : IEmployeeManager
     {
         private readonly string _filePath;
         private List<Employee> _employees;
@@ -22,9 +23,9 @@ namespace Employee_Manager.Managers
                 var json = File.ReadAllText(_filePath);
                 _employees.AddRange(JsonConvert.DeserializeObject<List<Employee>>(json) ?? _employees);
 
-                if (_employees.Count < 1) 
+                if (_employees.Count < 1)
                 {
-                    Console.WriteLine("ERROR: Incorrect data format in the file (see README.md)");    
+                    Console.WriteLine("ERROR: Incorrect data format in the file (see README.md)");
                 }
             }
             else
@@ -43,7 +44,8 @@ namespace Employee_Manager.Managers
         {
             int newId = 1;
 
-            if (_employees.Any() == true) {
+            if (_employees.Any() == true)
+            {
                 newId = _employees.Max(e => e.Id) + 1;
             }
 
@@ -102,7 +104,7 @@ namespace Employee_Manager.Managers
 
             if (!string.IsNullOrEmpty(lastName))
                 employee.LastName = lastName;
-            
+
             if (salary.HasValue)
                 employee.SalaryPerHour = salary.Value;
 
