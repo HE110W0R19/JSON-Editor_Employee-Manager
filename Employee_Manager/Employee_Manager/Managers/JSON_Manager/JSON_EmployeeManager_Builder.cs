@@ -1,4 +1,6 @@
-﻿namespace Employee_Manager.Managers.JSON_Manager
+﻿using System.Globalization;
+
+namespace Employee_Manager.Managers.JSON_Manager
 {
     public class JSON_EmployeeManager_Builder
     {
@@ -21,6 +23,7 @@
         /// <param name="args">аргументы командной строки</param>
         public void Execute(string[] args)
         {
+            args = new string[] { "-add", "FirstName:John", "LastName:Doe", "Salary:100.50" };
             if (args.Length == 0)
             {
                 Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: No arguments provided.");
@@ -61,11 +64,12 @@
         /// <param name="args">аргументы командной строки</param>
         private void AddEmployee(string[] args)
         {
-            var firstName = args[1].Split(' ')[0].Split(':')[1];
-            var lastName = args[1].Split(' ')[1].Split(':')[1];
-            var salaryStr = args[1].Split(' ')[2].Split(':')[1];
 
-            if (firstName != null && lastName != null && decimal.TryParse(salaryStr, out var salary))
+            var firstName = args[1].Split(':')[1];
+            var lastName = args[2].Split(':')[1];
+            var salaryStr = args[3].Split(':')[1];
+
+            if (firstName != null && lastName != null && decimal.TryParse(salaryStr, NumberStyles.Any, CultureInfo.InvariantCulture, out var salary))
             {
                 _manager.AddEmployee(firstName, lastName, salary);
             }

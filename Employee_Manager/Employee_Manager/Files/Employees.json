@@ -22,5 +22,17 @@
     "FirstName": "Michael",
     "LastName": "Brown",
     "SalaryPerHour": 27.40
+  },
+  {
+    "Id": 6,
+    "FirstName": "John",
+    "LastName": "Doe",
+    "SalaryPerHour": 100.50
+  },
+  {
+    "Id": 7,
+    "FirstName": "John",
+    "LastName": "Doe",
+    "SalaryPerHour": 100.50
   }
 ]
