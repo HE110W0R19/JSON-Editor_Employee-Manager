@@ -23,7 +23,6 @@ namespace Employee_Manager.Managers.JSON_Manager
         /// <param name="args">аргументы командной строки</param>
         public void Execute(string[] args)
         {
-            args = new string[] { "-add", "FirstName:John", "LastName:Doe", "Salary:100.50" };
             if (args.Length == 0)
             {
                 Console.WriteLine($"{DateTime.Now.ToLongTimeString()} ERROR: No arguments provided.");
@@ -87,9 +86,9 @@ namespace Employee_Manager.Managers.JSON_Manager
         {
             if (int.TryParse(args.FirstOrDefault(arg => arg.StartsWith("Id:"))?.Split(':')[1], out var idToUpdate))
             {
-                var firstName = args.FirstOrDefault(arg => arg.StartsWith("FirstName:"))?.Split(':')[1];
-                var lastName = args.FirstOrDefault(arg => arg.StartsWith("LastName:"))?.Split(':')[1];
-                var salaryStr = args.FirstOrDefault(arg => arg.StartsWith("Salary:"))?.Split(':')[1];
+                var firstName = args[1].Split(':')[1];
+                var lastName = args[2].Split(':')[1];
+                var salaryStr = args[3].Split(':')[1];
 
                 decimal? salaryToUpdate = null;
                 if (salaryStr != null && decimal.TryParse(salaryStr, out var parsedSalary))

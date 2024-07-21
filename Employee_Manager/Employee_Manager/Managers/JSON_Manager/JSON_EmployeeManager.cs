@@ -1,6 +1,7 @@
 ﻿using Employee_Manager.Abstracts;
 using Employee_Manager.Models;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Employee_Manager.Managers.JSON_Manager
 {
@@ -106,7 +107,7 @@ namespace Employee_Manager.Managers.JSON_Manager
                 return;
             }
 
-            Console.WriteLine($"\nId = {employee.Id}, FirstName = {employee.FirstName}, LastName = {employee.LastName}, SalaryPerHour = {employee.SalaryPerHour}");
+            Console.WriteLine($"Id = {employee.Id}, FirstName = {employee.FirstName}, LastName = {employee.LastName}, SalaryPerHour = {employee.SalaryPerHour.ToString(CultureInfo.InvariantCulture)}");
         }
 
         /// <summary>
@@ -171,7 +172,7 @@ namespace Employee_Manager.Managers.JSON_Manager
         {
             foreach (var employee in _employees)
             {
-                Console.WriteLine($"Id = {employee.Id}, FirstName = {employee.FirstName}, LastName = {employee.LastName}, SalaryPerHour = {employee.SalaryPerHour}");
+                Console.WriteLine($"Id = {employee.Id}, FirstName = {employee.FirstName}, LastName = {employee.LastName}, SalaryPerHour = {employee.SalaryPerHour.ToString(CultureInfo.InvariantCulture)}");
             }
         }
     }

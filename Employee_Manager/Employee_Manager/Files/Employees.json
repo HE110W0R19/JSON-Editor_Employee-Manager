@@ -34,5 +34,11 @@
     "FirstName": "John",
     "LastName": "Doe",
     "SalaryPerHour": 100.50
+  },
+  {
+    "Id": 8,
+    "FirstName": "John",
+    "LastName": "Doe",
+    "SalaryPerHour": 100.50
   }
 ]
